@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+  h1= title
+
+  form(action="", method="post") 
+    div.form-group 
+      label(for='title') Book: 
+      select#book.form-control(type='select' name='book' placeholder='Select book' required='true') 
+        for book in books 
+          option(
+            value=book._id
+            selected=(book._id.toString() === bookinstance.book._id.toString() ? 'selected' : false)
+          ) #{book.title}
+    div.form-group
+      label(for='imprint') Imprint: 
+      input#imprint.form-control(type='text', placeholder='Imprint XXX' name='imprint' required='true' value=(undefined === bookinstance ? '' : bookinstance.imprint))
+    div.form-group
+      label(for='status') Status: 
+      input#status.form-control(type='text', placeholder='Available, Maintenance, etc.' name='status' required='true' value=(undefined === bookinstance ? '' : bookinstance.status))
+    div.form-group
+      label(for='due_back') Due back: 
+      input#due_back.form-control(type='text', placeholder='Jan 25, 2022' name='due_back' required='true' value=(undefined === bookinstance ? '' : bookinstance.due_back))
+    button.btn.btn-primary(type='submit') Submit

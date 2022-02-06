@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1 Title: #{title}
+  form(action="", method="post") 
+    div.form-group
+    label(for='genre_name') Genre name:
+    input#genre_name.form-control(type='text', placeholder='Genre name' name='genre_name' required='true' value=(undefined===genre ? '' : genre.name) )
+    button.btn.btn-primary(type='submit') Submit
